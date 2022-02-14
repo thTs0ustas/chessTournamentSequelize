@@ -1,5 +1,8 @@
 ### Node template
+<<<<<<< HEAD
 .idea
+=======
+>>>>>>> 66d7c5b (initialCommit)
 # Logs
 logs
 *.log
