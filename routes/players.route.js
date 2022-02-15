@@ -7,7 +7,6 @@ const { Player, Match, Participation } = db.sequelize.models;
 /* GET users listing. */
 router.get("/list", async function (req, res) {
   const participation = await Participation.findAll({
-    attributes: ["id"],
     include: [Player],
   });
 
@@ -18,7 +17,7 @@ router.get("/list", async function (req, res) {
 });
 
 router.get("/add", async (req, res) => {
-  await Player.findAll({ attributes: ["id"], raw: true }).then((data) => {
+  await Player.findAll({ raw: true }).then((data) => {
     if (data.length === 10)
       res.render("participations/notEmpty", {
         title: "Add new Player",
@@ -38,26 +37,23 @@ router.post("/create", async (req, res) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
   });
-  try {
-    await player.createParticipation();
 
-    res.redirect("/players");
-  } catch (e) {
-    res.send("Participation exists");
-  }
+  await player.createParticipation();
+
+  res.redirect("/players/list");
 });
 
 router.post("/matches", async (req, res) => {
-  const part = await Participation.findAll({
-    attributes: ["id", "playerId"],
-  });
+  const part = await Participation.findAll({});
+  const prom = checkMatchUps(part).map((item) =>
+    Match.create({
+      participationId_1: item.participation_1,
+      participationId_2: item.participation_2,
+    })
+  );
   try {
-    for (const item of checkMatchUps(part)) {
-      await Match.create({
-        participationId_1: item.participation_1,
-        participationId_2: item.participation_2,
-      });
-    }
+    await Promise.all(prom);
+
     res.redirect("/players/matches");
   } catch (e) {
     res.send(e);

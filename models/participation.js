@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Participation.belongsTo(models.Player);
-      Participation.belongsTo(models.Match);
+      Participation.hasMany(models.Match);
     }
   }
   Participation.init(
