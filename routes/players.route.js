@@ -43,21 +43,18 @@ router.post("/create", async (req, res) => {
   res.redirect("/players/list");
 });
 
-router.post("/matches", async (req, res) => {
+router.get("/matches/setUp", async (req, res) => {
   const part = await Participation.findAll({});
-  const prom = checkMatchUps(part).map((item) =>
+  const matchesSetUp = checkMatchUps(part).map((item) =>
     Match.create({
       participationId_1: item.participation_1,
       participationId_2: item.participation_2,
     })
   );
-  try {
-    await Promise.all(prom);
 
-    res.redirect("/players/matches");
-  } catch (e) {
-    res.send(e);
-  }
+  await Promise.all(matchesSetUp);
+
+  setImmediate(() => res.redirect("/players/matches"));
 });
 
 router.get("/matches", async (req, res) => {
