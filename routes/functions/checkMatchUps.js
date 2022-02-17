@@ -1,68 +1,54 @@
-const { map, some, compact, shuffle } = require("lodash");
+const { shuffle, random, sortBy, isEqual } = require("lodash");
+const { map, some } = require("lodash/fp");
 
 const checkMatchUps = (listOfMatches) => {
-  let arr = [];
-  let rnd = Math.floor(Math.random() * listOfMatches.length);
-  let rnd2 = Math.floor(Math.random() * listOfMatches.length);
+  let matches = [];
 
-  while (arr.length <= 13) {
+  const limit = listOfMatches.length - 1;
+
+  const listOfIds = map("id")(listOfMatches);
+
+  let rnd = random(limit);
+  let rnd2 = random(limit);
+
+  while (matches.length < 15) {
     if (rnd === rnd2) {
-      rnd = Math.floor(Math.random() * listOfMatches.length);
-      rnd2 = Math.floor(Math.random() * listOfMatches.length);
-      continue;
-    }
-    const checkReverseMatch = some(arr, {
-      participation_1: listOfMatches[rnd2].id,
-      participation_2: listOfMatches[rnd].id,
-    });
-    const checkSameMatch = some(arr, {
-      participation_1: listOfMatches[rnd].id,
-      participation_2: listOfMatches[rnd2].id,
-    });
-
-    const checkForForthMatchUp = compact(
-      map(arr, (item) => {
-        if (
-          item.participation_1 === listOfMatches[rnd].id ||
-          item.participation_2 === listOfMatches[rnd].id
-        )
-          return true;
-      })
-    );
-    const checkForForthMatchUp2 = compact(
-      map(arr, (item) => {
-        if (
-          item.participation_1 === listOfMatches[rnd2].id ||
-          item.participation_2 === listOfMatches[rnd2].id
-        )
-          return true;
-      })
-    );
-
-    if (checkReverseMatch || checkSameMatch) {
-      rnd = Math.floor(Math.random() * listOfMatches.length);
-      rnd2 = Math.floor(Math.random() * listOfMatches.length);
-      continue;
-    } else if (checkForForthMatchUp.length === 3) {
-      rnd = Math.floor(Math.random() * listOfMatches.length);
-      rnd2 = Math.floor(Math.random() * listOfMatches.length);
-      continue;
-    } else if (checkForForthMatchUp2.length === 3) {
-      rnd = Math.floor(Math.random() * listOfMatches.length);
-      rnd2 = Math.floor(Math.random() * listOfMatches.length);
+      rnd = random(limit);
+      rnd2 = random(limit);
       continue;
     }
 
-    arr = [
-      ...shuffle(arr),
-      {
-        participation_1: listOfMatches[rnd].id,
-        participation_2: listOfMatches[rnd2].id,
-      },
-    ];
+    let setExist = some((set) =>
+      isEqual(sortBy(set), sortBy([listOfIds[rnd], listOfIds[rnd2]]))
+    )(matches);
+
+    const idExist = (id) =>
+      map((set) => set[0] === id || set[1] === id)(matches).filter(
+        (item) => item !== false
+      );
+
+    console.log(idExist(1));
+
+    if (setExist) {
+      rnd = random(limit);
+      rnd2 = random(limit);
+      continue;
+    }
+
+    if (idExist(listOfIds[rnd]).length >= 3) {
+      rnd = random(limit);
+      continue;
+    }
+
+    if (idExist(listOfIds[rnd2]).length >= 3) {
+      rnd2 = random(limit);
+      continue;
+    }
+
+    matches = [...shuffle(matches), shuffle([listOfIds[rnd], listOfIds[rnd2]])];
   }
 
-  return arr;
+  return matches;
 };
 
 module.exports = checkMatchUps;

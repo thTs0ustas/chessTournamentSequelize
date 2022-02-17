@@ -17,11 +17,14 @@ router.get("/list", async function (req, res) {
 });
 
 router.get("/add", async (req, res) => {
+  const matches = await Match.findAll({ attributes: ["id"], raw: true });
+
   await Player.findAll({ raw: true }).then((data) => {
     if (data.length === 10)
       res.render("participations/notEmpty", {
         title: "Add new Player",
         message: "No more empty spots!!",
+        matchesSetUp: !!matches.length,
       });
     else
       res.render("participations/createParticipation", {
@@ -44,17 +47,25 @@ router.post("/create", async (req, res) => {
 });
 
 router.get("/matches/setUp", async (req, res) => {
-  const part = await Participation.findAll({});
+  const part = await Participation.findAll();
+  checkMatchUps(part);
   const matchesSetUp = checkMatchUps(part).map((item) =>
     Match.create({
-      participationId_1: item.participation_1,
-      participationId_2: item.participation_2,
+      participationId_1: item[0],
+      participationId_2: item[1],
     })
   );
 
   await Promise.all(matchesSetUp);
-
+  // res.json(checkMatchUps(part));
   setImmediate(() => res.redirect("/players/matches"));
+});
+
+router.get("/json", async (req, res) => {
+  const players = await Player.findAll({
+    raw: true,
+  });
+  res.json(players);
 });
 
 router.get("/matches", async (req, res) => {
