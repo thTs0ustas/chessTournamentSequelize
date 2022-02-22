@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         unique: "compositeIndex",
         references: {
-          model: "Participations",
+          model: "participations",
           key: "id",
         },
       },
@@ -22,7 +22,7 @@ module.exports = {
         unique: "compositeIndex",
         type: Sequelize.INTEGER,
         references: {
-          model: "Participations",
+          model: "participations",
           key: "id",
         },
       },

@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+
 const db = require("../models");
 const checkMatchUps = require("./functions/checkMatchUps");
 const { Player, Match, Participation } = db.sequelize.models;
@@ -48,7 +49,7 @@ router.post("/create", async (req, res) => {
 
 router.get("/matches/setUp", async (req, res) => {
   const part = await Participation.findAll();
-  checkMatchUps(part);
+  // checkMatchUps(part);
   const matchesSetUp = checkMatchUps(part).map((item) =>
     Match.create({
       participationId_1: item[0],

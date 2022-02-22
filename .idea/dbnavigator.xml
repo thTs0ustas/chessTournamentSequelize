@@ -23,7 +23,7 @@
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="true" />
+    <show-object-properties value="false" />
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
@@ -41,9 +41,31 @@
     <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="chesstournament.matches" active-filter-id="EMPTY_FILTER">
       <filter id="64e78a05-ea49-44d6-ba47-e51875858bd2" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
+    <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="sequelize.studenttocourses" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="sails002.order_details" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="express004.customers" active-filter-id="6e6fa519-b12c-4409-8d94-3ac381ce9a93">
+      <filter id="6e6fa519-b12c-4409-8d94-3ac381ce9a93" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="chesstournament.players" active-filter-id="28092b19-7ddd-4f8e-930d-2b62fd38fd3a">
+      <filter id="28092b19-7ddd-4f8e-930d-2b62fd38fd3a" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="express004.sequelizemeta" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="chesstournament.participations" active-filter-id="84f8e269-b6d6-4c31-abc6-c72e0b1191f5">
       <filter id="84f8e269-b6d6-4c31-abc6-c72e0b1191f5" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
+    <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="express004.products" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="express004.orderdetails" active-filter-id="">
+      <filter id="145cf933-8572-43ce-ab6f-a486454f6cba" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
+    <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="sails002.customers" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="sequelize.courses" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="express004.orders" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="sails002.orders" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="sails002.products" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="sails002.archive" active-filter-id="" />
+    <filter-actions connection-id="121de9ec-7fe7-466e-b084-e5f923c26d07" dataset="sequelize.students" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -297,7 +319,7 @@
     </dataset-editor-settings>
     <code-editor-settings>
       <general>
-        <show-object-navigation-gutter value="false" />
+        <show-object-navigation-gutter value="true" />
         <show-spec-declaration-navigation-gutter value="true" />
         <enable-spellchecking value="true" />
         <enable-reference-spellchecking value="false" />
@@ -532,7 +554,7 @@
     <general-settings>
       <regional-settings>
         <date-format value="MEDIUM" />
-        <number-format value="UNGROUPED" />
+        <number-format value="GROUPED" />
         <locale value="SYSTEM_DEFAULT" />
         <use-custom-formats value="false" />
       </regional-settings>

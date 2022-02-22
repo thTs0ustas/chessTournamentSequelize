@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
+
   Match.init(
     {
       result: DataTypes.STRING,

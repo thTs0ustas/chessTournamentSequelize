@@ -14,7 +14,7 @@ module.exports = {
         primaryKey: true,
         unique: true,
         references: {
-          model: "Players",
+          model: "players",
           key: "id",
         },
       },
