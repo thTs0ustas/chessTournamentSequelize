@@ -75,9 +75,9 @@
     "@types/lodash" "*"
     "@types/validator" "*"
 
-"@types/validator@*":
-  version "13.7.1"
-  resolved "https://registry.npmjs.org/@types/validator/-/validator-13.7.1.tgz"
+"@types/validator@*", "@types/validator@^13.7.1":
+  version "13.7.12"
+  resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.7.12.tgz#a285379b432cc8d103b69d223cbb159a253cf2f7"
 
 abbrev@1:
   version "1.1.1"
@@ -897,9 +897,9 @@ imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz"
 
-inflection@^1.13.1:
-  version "1.13.2"
-  resolved "https://registry.npmjs.org/inflection/-/inflection-1.13.2.tgz"
+inflection@^1.13.2:
+  version "1.13.4"
+  resolved "https://registry.yarnpkg.com/inflection/-/inflection-1.13.4.tgz#65aa696c4e2da6225b148d7a154c449366633a32"
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -1166,9 +1166,9 @@ minimist@^1.2.0:
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
 
-moment-timezone@^0.5.34:
-  version "0.5.34"
-  resolved "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.34.tgz"
+moment-timezone@^0.5.35:
+  version "0.5.40"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.40.tgz#c148f5149fd91dd3e29bf481abc8830ecba16b89"
   dependencies:
     moment ">= 2.9.0"
 
@@ -1460,9 +1460,9 @@ responselike@^1.0.2:
   dependencies:
     lowercase-keys "^1.0.0"
 
-retry-as-promised@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/retry-as-promised/-/retry-as-promised-5.0.0.tgz"
+retry-as-promised@^7.0.3:
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/retry-as-promised/-/retry-as-promised-7.0.4.tgz#9df73adaeea08cb2948b9d34990549dc13d800a2"
 
 rimraf@^3.0.2:
   version "3.0.2"
@@ -1536,19 +1536,20 @@ sequelize-pool@^7.1.0:
   version "7.1.0"
   resolved "https://registry.npmjs.org/sequelize-pool/-/sequelize-pool-7.1.0.tgz"
 
-sequelize@^6.16.1:
-  version "6.16.2"
-  resolved "https://registry.npmjs.org/sequelize/-/sequelize-6.16.2.tgz"
+sequelize@^6.28.2:
+  version "6.28.2"
+  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-6.28.2.tgz#adf42c4f4532a1c41bccdd98e8344798f678d273"
   dependencies:
     "@types/debug" "^4.1.7"
+    "@types/validator" "^13.7.1"
     debug "^4.3.3"
     dottie "^2.0.2"
-    inflection "^1.13.1"
+    inflection "^1.13.2"
     lodash "^4.17.21"
     moment "^2.29.1"
-    moment-timezone "^0.5.34"
+    moment-timezone "^0.5.35"
     pg-connection-string "^2.5.0"
-    retry-as-promised "^5.0.0"
+    retry-as-promised "^7.0.3"
     semver "^7.3.5"
     sequelize-pool "^7.1.0"
     toposort-class "^1.0.1"
